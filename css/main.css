@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* Scss Document */
+html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-wrap: wrap; 
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #f0f0f0;
+    }
+
+    h1 {
+      font-size: 5vw; /* 画面幅に応じてサイズ変化 */
+      color: #333;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 8vw; /* スマホでは少し大きめに */
+      }
+    }
