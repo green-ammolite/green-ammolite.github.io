@@ -108,9 +108,10 @@
     const ffmi = lbm / (h * h);
 
     output.innerText =
+      `FFMI：${ffmi.toFixed(2)}\n`
       `脂肪量：${fatMass.toFixed(2)} kg\n` +
-      `除脂肪体重：${lbm.toFixed(2)} kg\n` +
-      `FFMI：${ffmi.toFixed(2)}`;
+      `除脂肪体重：${lbm.toFixed(2)} kg` +
+      ;
   }
 
   function copyResult() {
