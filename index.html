@@ -12,9 +12,17 @@
       background: #fafafa;
     }
 
+    /* 中央カラム */
+    .container {
+      width: 375px;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
     .fixed {
       font-size: 16px;
       margin-bottom: 16px;
+      text-align: left;
     }
 
     label {
@@ -28,6 +36,7 @@
       padding: 8px;
       font-size: 16px;
       margin-top: 4px;
+      box-sizing: border-box;
     }
 
     button {
@@ -41,6 +50,11 @@
       color: white;
     }
 
+    .copy {
+      margin-top: 10px;
+      background: #16a34a;
+    }
+
     .result {
       margin-top: 24px;
       font-size: 16px;
@@ -50,31 +64,38 @@
 </head>
 <body>
 
-  <!-- 固定表示 -->
-  <div class="fixed">
-    身長：155 cm
+  <div class="container">
+
+    <!-- 固定表示 -->
+    <div class="fixed">
+      身長：155 cm
+    </div>
+
+    <!-- 入力 -->
+    <label>
+      体重（kg）
+      <input type="number" id="weight" step="0.1">
+    </label>
+
+    <label>
+      体脂肪率（%）
+      <input type="number" id="fat" step="0.1">
+    </label>
+
+    <!-- 確定 -->
+    <button onclick="calculate()">確定する</button>
+
+    <!-- 結果 -->
+    <div class="result" id="result"></div>
+
+    <!-- コピー -->
+    <button class="copy" onclick="copyResult()">コピー</button>
+
   </div>
-
-  <!-- 入力 -->
-  <label>
-    体重（kg）
-    <input type="number" id="weight" step="0.1">
-  </label>
-
-  <label>
-    体脂肪率（%）
-    <input type="number" id="fat" step="0.1">
-  </label>
-
-  <!-- 確定 -->
-  <button onclick="calculate()">確定する</button>
-
-  <!-- 結果 -->
-  <div class="result" id="result" onclick="copyResult()"></div>
 
   <script>
     function calculate() {
-      const height = 1.55; // 固定
+      const height = 1.55;
       const weight = parseFloat(document.getElementById("weight").value);
       const fat = parseFloat(document.getElementById("fat").value);
 
@@ -97,7 +118,10 @@
 
     function copyResult() {
       const text = document.getElementById("result").innerText;
-      if (!text) return;
+      if (!text) {
+        alert("先に確定してください");
+        return;
+      }
       navigator.clipboard.writeText(text);
       alert("コピーしました");
     }
